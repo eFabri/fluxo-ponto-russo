@@ -143,18 +143,19 @@ body {
 
 /* LANDING ABOVE THE FOLD — flex column ocupa 100dvh */
 #s0 { height:100dvh; display:flex; flex-direction:column; overflow:hidden; }
-#s0 .container { flex:1; display:flex; flex-direction:column; min-height:0; padding-bottom:12px; }
+#s0 .container { flex:1; display:flex; flex-direction:column; min-height:0; padding-bottom:10px; }
 
-.landing { text-align:center; padding-top:6px; flex:1; display:flex; flex-direction:column; min-height:0; }
-.landing-eyebrow { font-size:11px; font-weight:700; color:#e8175c; letter-spacing:.08em; text-transform:uppercase; margin-bottom:6px; flex-shrink:0; }
-.landing h1 { font-size:20px; font-weight:900; line-height:1.2; margin-bottom:6px; color:#1a1a1a; flex-shrink:0; }
-.landing h1 .hl { background:#e8175c; color:#fff; padding:1px 8px; border-radius:5px; display:inline-block; }
-.landing-desc { font-size:12px; line-height:1.55; color:#555; margin-bottom:6px; flex-shrink:0; }
+.landing { text-align:center; padding-top:4px; flex:1; display:flex; flex-direction:column; min-height:0; }
+.landing-eyebrow { font-size:10px; font-weight:700; color:#e8175c; letter-spacing:.08em; text-transform:uppercase; margin-bottom:5px; flex-shrink:0; }
+.landing h1 { font-size:19px; font-weight:900; line-height:1.18; margin-bottom:5px; color:#1a1a1a; flex-shrink:0; }
+.landing h1 .hl { background:#e8175c; color:#fff; padding:1px 7px; border-radius:5px; display:inline-block; }
+.landing-desc { font-size:12px; line-height:1.45; color:#555; margin-bottom:5px; flex-shrink:0; }
 .landing-desc .money { color:#1a9c46; font-weight:800; }
 
-/* HERO CARD — ocupa o espaço flex disponível, imagem inteira sem corte */
+/* HERO CARD — altura controlada, imagem inteira sem corte */
 .hero-card {
-  flex:1; min-height:0; border-radius:18px; margin-bottom:8px;
+  flex:1; min-height:0; max-height:42vh;
+  border-radius:18px; margin-bottom:7px;
   overflow:hidden; position:relative; background:#fce4ec;
   display:flex; align-items:center; justify-content:center;
 }
@@ -175,8 +176,8 @@ body {
   margin-top:8px; letter-spacing:.05em;
 }
 
-.landing-sub { font-size:12px; color:#444; line-height:1.55; margin-bottom:4px; flex-shrink:0; }
-.landing-cta-hint { font-size:11px; color:#999; margin-bottom:8px; flex-shrink:0; }
+.landing-sub { font-size:11px; color:#444; line-height:1.45; margin-bottom:3px; flex-shrink:0; }
+.landing-cta-hint { font-size:10px; color:#999; margin-bottom:7px; flex-shrink:0; }
 
 /* BUTTONS */
 .btn-primary {
