@@ -133,51 +133,46 @@ body {
 
 .container { max-width: 480px; margin: 0 auto; padding: 0 20px 20px; }
 
-/* LOGO */
-.logo-wrap { text-align: center; padding: 10px 0 0; }
-.logo-img { height: 36px; width: auto; object-fit: contain; }
-
 /* PROGRESS BAR */
 .progress-bar-wrap { width:100%; height:6px; background:#f0d4de; border-radius:3px; overflow:hidden; margin-bottom:32px; }
 .progress-bar-fill { height:100%; background:#e8175c; border-radius:3px; transition:width 0.5s cubic-bezier(.4,0,.2,1); }
 
 /* LANDING ABOVE THE FOLD — flex column ocupa 100dvh */
 #s0 { height:100dvh; display:flex; flex-direction:column; overflow:hidden; }
-#s0 .container { flex:1; display:flex; flex-direction:column; min-height:0; padding-bottom:10px; }
+#s0 .container { flex:1; display:flex; flex-direction:column; min-height:0; padding:0 16px 10px; }
 
-.landing { text-align:center; padding-top:4px; flex:1; display:flex; flex-direction:column; min-height:0; }
-.landing-eyebrow { font-size:10px; font-weight:700; color:#e8175c; letter-spacing:.08em; text-transform:uppercase; margin-bottom:5px; flex-shrink:0; }
-.landing h1 { font-size:19px; font-weight:900; line-height:1.18; margin-bottom:5px; color:#1a1a1a; flex-shrink:0; }
-.landing h1 .hl { background:#e8175c; color:#fff; padding:1px 7px; border-radius:5px; display:inline-block; }
-.landing-desc { font-size:12px; line-height:1.45; color:#555; margin-bottom:5px; flex-shrink:0; }
+.landing { text-align:center; padding-top:0; margin-top:0; flex:1; display:flex; flex-direction:column; min-height:0; gap:0; }
+.landing-eyebrow { font-size:9px; font-weight:700; color:#e8175c; letter-spacing:.08em; text-transform:uppercase; margin-bottom:2px; flex-shrink:0; }
+.landing h1 { font-size:16px; font-weight:900; line-height:1.15; margin-bottom:4px; color:#1a1a1a; flex-shrink:0; }
+.landing h1 .hl { background:#e8175c; color:#fff; padding:1px 6px; border-radius:4px; display:inline-block; }
+.landing-desc { font-size:10.5px; line-height:1.4; color:#555; margin-bottom:4px; flex-shrink:0; }
 .landing-desc .money { color:#1a9c46; font-weight:800; }
 
-/* HERO CARD — altura controlada, imagem inteira sem corte */
+/* HERO CARD — cresce para preencher espaço disponível, foto inteira sem corte */
 .hero-card {
-  flex:1; min-height:0; max-height:42vh;
-  border-radius:18px; margin-bottom:7px;
+  flex:1; min-height:0;
+  border-radius:16px; margin-bottom:4px;
   overflow:hidden; position:relative; background:#fce4ec;
-  display:flex; align-items:center; justify-content:center;
 }
 .hero-card img.hero-photo {
-  width:100%; height:100%; display:block; object-fit:contain;
+  width:100%; height:auto; display:block; object-fit:contain;
 }
 .hero-card-info {
   position:absolute; bottom:0; left:0; right:0;
   background:linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%);
-  padding:28px 18px 18px;
+  padding:5px 12px 6px;
   text-align:left;
 }
-.hero-name { font-size:17px; font-weight:800; color:#fff; }
-.hero-title { font-size:12px; color:rgba(255,255,255,0.85); font-style:italic; margin-top:2px; }
+.hero-name { font-size:11.5px; font-weight:800; color:#fff; }
+.hero-title { font-size:9.5px; color:rgba(255,255,255,0.85); font-style:italic; margin-top:1px; }
 .hero-badge {
   display:inline-block; background:#e8175c; color:#fff;
-  font-size:11px; font-weight:700; padding:4px 12px; border-radius:20px;
-  margin-top:8px; letter-spacing:.05em;
+  font-size:8.5px; font-weight:700; padding:2px 7px; border-radius:20px;
+  margin-top:3px; letter-spacing:.05em;
 }
 
-.landing-sub { font-size:11px; color:#444; line-height:1.45; margin-bottom:3px; flex-shrink:0; }
-.landing-cta-hint { font-size:10px; color:#999; margin-bottom:7px; flex-shrink:0; }
+.landing-sub { font-size:10px; color:#444; line-height:1.4; margin-bottom:2px; flex-shrink:0; }
+.landing-cta-hint { font-size:9.5px; color:#999; margin-bottom:6px; flex-shrink:0; }
 
 /* BUTTONS */
 .btn-primary {
@@ -189,6 +184,7 @@ body {
 }
 .btn-primary:hover { background:#c8124e; }
 .btn-primary:active { transform:scale(0.98); }
+#s0 .btn-primary { padding:12px 24px; font-size:13px; }
 .btn-green { background:#1a9c46; }
 .btn-green:hover { background:#157a38; }
 
@@ -352,13 +348,6 @@ body {
 <!-- ==================== S0: LANDING ==================== -->
 <div class="screen active" id="s0">
   <div class="container">
-    <!-- LOGO -->
-    <div class="logo-wrap">
-      <img class="logo-img"
-        src="https://res.cloudinary.com/def9lnal7/image/upload/v1782227042/Logo_Vivendo_de_Ponto_Russo_igrgkn.webp"
-        alt="Vivendo de Ponto Russo">
-    </div>
-
     <div class="landing">
       <p class="landing-eyebrow">A maior tendência do artesanato para 2026</p>
       <h1>Descubra como o <span class="hl">PONTO RUSSO</span> pode mudar sua vida</h1>
