@@ -137,31 +137,30 @@ body {
 .progress-bar-wrap { width:100%; height:6px; background:#f0d4de; border-radius:3px; overflow:hidden; margin-bottom:32px; }
 .progress-bar-fill { height:100%; background:#e8175c; border-radius:3px; transition:width 0.5s cubic-bezier(.4,0,.2,1); }
 
-/* LANDING ABOVE THE FOLD — flex column ocupa 100dvh */
-#s0 { height:100dvh; display:flex; flex-direction:column; overflow:hidden; }
-#s0 .container { flex:1; display:flex; flex-direction:column; min-height:0; padding:0 16px 10px; }
+/* LANDING ABOVE THE FOLD — bloqueio total em 100dvh */
+#s0 { height:100dvh; overflow:hidden; }
+#s0 .container { height:100%; padding:0 16px 8px; }
 
-.landing { text-align:center; padding-top:0; margin-top:0; flex:1; display:flex; flex-direction:column; min-height:0; gap:0; }
+.landing { height:100%; display:flex; flex-direction:column; text-align:center; padding-top:0; }
 .landing-eyebrow { font-size:9px; font-weight:700; color:#e8175c; letter-spacing:.08em; text-transform:uppercase; margin-bottom:2px; flex-shrink:0; }
 .landing h1 { font-size:16px; font-weight:900; line-height:1.15; margin-bottom:4px; color:#1a1a1a; flex-shrink:0; }
 .landing h1 .hl { background:#e8175c; color:#fff; padding:1px 6px; border-radius:4px; display:inline-block; }
 .landing-desc { font-size:10.5px; line-height:1.4; color:#555; margin-bottom:4px; flex-shrink:0; }
 .landing-desc .money { color:#1a9c46; font-weight:800; }
 
-/* HERO CARD — cresce para preencher espaço disponível, foto inteira sem corte */
+/* HERO CARD — quadrado (imagem é 1254×1254), sem letterboxing */
 .hero-card {
-  flex:1; min-height:0;
-  border-radius:16px; margin-bottom:4px;
+  width:100%; aspect-ratio:1/1;
+  border-radius:16px; margin-bottom:4px; flex-shrink:0;
   overflow:hidden; position:relative; background:#fce4ec;
 }
 .hero-card img.hero-photo {
-  width:100%; height:auto; display:block; object-fit:contain;
+  width:100%; height:100%; display:block; object-fit:contain;
 }
 .hero-card-info {
   position:absolute; bottom:0; left:0; right:0;
   background:linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%);
-  padding:5px 12px 6px;
-  text-align:left;
+  padding:5px 12px 8px; text-align:left;
 }
 .hero-name { font-size:11.5px; font-weight:800; color:#fff; }
 .hero-title { font-size:9.5px; color:rgba(255,255,255,0.85); font-style:italic; margin-top:1px; }
