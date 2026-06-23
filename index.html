@@ -141,21 +141,25 @@ body {
 .progress-bar-wrap { width:100%; height:6px; background:#f0d4de; border-radius:3px; overflow:hidden; margin-bottom:32px; }
 .progress-bar-fill { height:100%; background:#e8175c; border-radius:3px; transition:width 0.5s cubic-bezier(.4,0,.2,1); }
 
-/* LANDING */
-.landing { text-align:center; padding-top:8px; }
-.landing-eyebrow { font-size:12px; font-weight:700; color:#e8175c; letter-spacing:.08em; text-transform:uppercase; margin-bottom:14px; }
-.landing h1 { font-size:22px; font-weight:900; line-height:1.22; margin-bottom:10px; color:#1a1a1a; }
-.landing h1 .hl { background:#e8175c; color:#fff; padding:2px 10px; border-radius:5px; display:inline-block; }
-.landing-desc { font-size:13px; line-height:1.7; color:#555; margin-bottom:8px; }
+/* LANDING ABOVE THE FOLD — flex column ocupa 100dvh */
+#s0 { height:100dvh; display:flex; flex-direction:column; overflow:hidden; }
+#s0 .container { flex:1; display:flex; flex-direction:column; min-height:0; padding-bottom:12px; }
+
+.landing { text-align:center; padding-top:6px; flex:1; display:flex; flex-direction:column; min-height:0; }
+.landing-eyebrow { font-size:11px; font-weight:700; color:#e8175c; letter-spacing:.08em; text-transform:uppercase; margin-bottom:6px; flex-shrink:0; }
+.landing h1 { font-size:20px; font-weight:900; line-height:1.2; margin-bottom:6px; color:#1a1a1a; flex-shrink:0; }
+.landing h1 .hl { background:#e8175c; color:#fff; padding:1px 8px; border-radius:5px; display:inline-block; }
+.landing-desc { font-size:12px; line-height:1.55; color:#555; margin-bottom:6px; flex-shrink:0; }
 .landing-desc .money { color:#1a9c46; font-weight:800; }
 
-/* HERO CARD COM FOTO */
+/* HERO CARD — ocupa o espaço flex disponível, imagem inteira sem corte */
 .hero-card {
-  width:100%; border-radius:22px; margin-bottom:10px;
+  flex:1; min-height:0; border-radius:18px; margin-bottom:8px;
   overflow:hidden; position:relative; background:#fce4ec;
+  display:flex; align-items:center; justify-content:center;
 }
 .hero-card img.hero-photo {
-  width:100%; height:auto; display:block; object-fit:contain;
+  width:100%; height:100%; display:block; object-fit:contain;
 }
 .hero-card-info {
   position:absolute; bottom:0; left:0; right:0;
@@ -171,8 +175,8 @@ body {
   margin-top:8px; letter-spacing:.05em;
 }
 
-.landing-sub { font-size:13px; color:#444; line-height:1.7; margin-bottom:6px; }
-.landing-cta-hint { font-size:12px; color:#999; margin-bottom:10px; }
+.landing-sub { font-size:12px; color:#444; line-height:1.55; margin-bottom:4px; flex-shrink:0; }
+.landing-cta-hint { font-size:11px; color:#999; margin-bottom:8px; flex-shrink:0; }
 
 /* BUTTONS */
 .btn-primary {
@@ -844,13 +848,30 @@ body {
         </div>
       </div>
 
+      <!-- TIMER DE URGÊNCIA -->
+      <div id="urgency-timer" style="background:#1a1a1a;border-radius:16px;padding:14px 18px;margin-bottom:14px;text-align:center;">
+        <p style="font-size:11px;font-weight:700;color:#e8175c;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">⚠️ Oferta expira em</p>
+        <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
+          <div style="background:#e8175c;border-radius:10px;padding:8px 14px;min-width:52px;">
+            <div id="timer-min" style="font-size:28px;font-weight:900;color:#fff;line-height:1;">10</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.75);font-weight:600;margin-top:2px;">MIN</div>
+          </div>
+          <div style="font-size:28px;font-weight:900;color:#fff;line-height:1;">:</div>
+          <div style="background:#e8175c;border-radius:10px;padding:8px 14px;min-width:52px;">
+            <div id="timer-sec" style="font-size:28px;font-weight:900;color:#fff;line-height:1;">00</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.75);font-weight:600;margin-top:2px;">SEG</div>
+          </div>
+        </div>
+        <p style="font-size:11px;color:rgba(255,255,255,0.6);margin-top:8px;">Após esse tempo, o desconto especial será removido</p>
+      </div>
+
       <!-- OFFER BOX -->
       <div class="offer-box">
         <p class="offer-label">🔥 Oferta especial para o seu perfil</p>
         <p class="offer-anchor">De R$408,00</p>
         <p class="offer-price-big"><span>R$</span>29<span style="font-size:28px;">,90</span></p>
         <p class="offer-or">ou parcelado em</p>
-        <p class="offer-parcel">12x de R$2,49 <small>no cartão</small></p>
+        <p class="offer-parcel">9x de R$3,32 <small>no cartão</small></p>
         <p class="offer-guarantee">🔒 Garantia de <strong>7 dias</strong> — risco zero · Acesso imediato</p>
       </div>
 
@@ -1011,6 +1032,39 @@ window.addEventListener('load', function() {
   var cta = document.querySelector('#s0 .btn-primary');
   if (cta) cta.classList.add('btn-cta-pulse');
 });
+
+/* ======== TIMER DE URGÊNCIA — 10 min ======== */
+(function() {
+  var total = 10 * 60;
+  var started = false;
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  function tick() {
+    if (total <= 0) {
+      document.getElementById('timer-min').textContent = '00';
+      document.getElementById('timer-sec').textContent = '00';
+      return;
+    }
+    total--;
+    document.getElementById('timer-min').textContent = pad(Math.floor(total / 60));
+    document.getElementById('timer-sec').textContent = pad(total % 60);
+    setTimeout(tick, 1000);
+  }
+  function startTimerOnce() {
+    if (started) return;
+    var el = document.getElementById('urgency-timer');
+    if (!el) return;
+    var obs = new MutationObserver(function() {
+      var result = document.getElementById('result');
+      if (result && result.classList.contains('active') && !started) {
+        started = true;
+        setTimeout(tick, 1000);
+        obs.disconnect();
+      }
+    });
+    obs.observe(document.body, { attributes: true, subtree: true, attributeFilter: ['class'] });
+  }
+  document.addEventListener('DOMContentLoaded', startTimerOnce);
+})();
 </script>
 </body>
 </html>
